@@ -3,6 +3,13 @@
   
     
     <entry>
+      <title><![CDATA[Java 项目部署（一）]]></title>
+      <url>%2F2017%2F04%2F11%2F%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2-1%2F</url>
+      <content type="text"><![CDATA[上周六折腾了一天终于把快一年前的坑给填上了。阿里是越来越会玩了，ECS的价格从原来的40一个月慢慢的涨到了80。发现了腾讯服务器特惠，免费一个月加几张优惠劵，够半年了。把自己开发的一个轻博客部署上去了，这个博客整体样式仿照 Tumblr。注册的时候连接Outlook邮箱发注册邮件老是抽风，有时候邮件可以发成功有时候连接失败，下次有时间注册个邮件平台。 打算系统的记录下项目部署的过程和其中的遇到的的坑。 系统采用的是 Apache Https + Tomcat + MySql，采用的是企鹅家的云服务器，系统是 Centos，只开放了 80 端口供网页访问。 最后附上网站的链接。 Honks]]></content>
+    </entry>
+
+    
+    <entry>
       <title><![CDATA[Java Puzzler（5-6）]]></title>
       <url>%2F2017%2F03%2F26%2FJavaPuzzler-2%2F</url>
       <content type="text"><![CDATA[5. 十六进制和八进制12345678910111213System.out.println(0x80);//128//0x81看作是int型，最高位(第32位)为0，所以是正数System.out.println(0x81);//129System.out.println(0x8001);//32769System.out.println(0x70000001);//1879048193//字面量0x80000001为int型，最高位(第32位)为1，所以是负数System.out.println(0x80000001);//-2147483647//字面量0x80000001L强制转为long型，最高位（第64位）为0，所以是正数System.out.println(0x80000001L);//2147483649//最小int型System.out.println(0x80000000);//-2147483648//只要超过32位，就需要在字面常量后加L强转long，否则编译时出错System.out.println(0x8000000000000000L);//-9223372036854775808 △ 如果Hex和Octal转换为10进制时字面常量的最高位为1，这个数为负数 十六进制的字面常量表示的是int型，如果超过32位，则需要在后面加“L”，否则编译过不过。如果为32，则为负int正数，超过32位，则为long型，但需明确指定为long。 通常最好避免混合类型运算 6. 多重转型（二进制原理） Type Bit Length Int 32位 2^31-1 byte 8位 2^7-1 char 16位 2^16-1 数据类型都要保留最高位作为符号位 有符号的数据类型存储是先将其无符号数Binary，在将其到最高位都置1如： 1234System.out.println(Integer.toBinaryString(-1));//1111 1111 1111 1111 1111 1111 1111 1111System.out.println(Integer.toBinaryString(-100));//1111 1111 1111 1111 1111 1111 1001 1100 符号扩展进行符号扩展，即短数据类型的符号位填充到长数据类型的高字节位（即比短数据类型多出的那一部分），保证扩展后的数值大小不变 123byte x=-1; int y=x; //则x的二进制值为1111 1111，y的值应为1111 1111 1111 1111 1111 1111 1000 1001；byte =1; short y=x; //则y的值应为0000 0000 0000 0000 0000 0000 0000 0001； 零扩展进行零扩展，即用零来填充长数据类型的高字节位 12unsigned char x=1000 1001b; short y=x; //则y的值应为00000000 10001001b；unsigned char x=0000 1001b; short y=x; //则y的值应为00000000 00001001b； △ 从较窄整型转换成较宽整型规定：如果最初的数值类型是有符号的，就进行符号扩展；如果它是char，那么不管它转化成什么类型，都是进行零扩展 12345678char c = (char)(0xff &amp; b);/* 0000 0000 0000 0000 0000 0000 1111 1111 (0Xff) &amp; 1111 1111 1111 1111 1111 1111 1001 1100 (b=-100) ----------------------------------------- 0000 0000 0000 0000 0000 0000 1001 1100 (100)*///0xff是第八位全部置1；其他位全部置0；//上面是不进行符号扩展]]></content>
@@ -34,13 +41,6 @@
       <title><![CDATA[Maven 学习笔记（一）]]></title>
       <url>%2F2017%2F01%2F31%2FMaven%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1%2F</url>
       <content type="text"><![CDATA[做的项目大部分都是用 Maven 构建的，一直没有系统的学习和整理 Maven 的知识。最近接手的一个项目，研究架构代码的时候，发现一个大牛们写的一个通过解析 PDM 生成对应数据的生成实体对象的一个 Maven 插件。研究的时候发现很多 Maven 知识还不甚了解，找了本 《Maven 实战》系统的学习和整理知识点一遍。 Maven IntroduceMaven 是一种构建工具,同时还是一个依赖管理工具和项目信息管理工具.它提供了中央仓库,能帮我们自动下载构件. Maven 文件目录 bin 该目录包含mvn运行的脚本,这些脚本用来配置Java命令,mvnDebug,主要是 Maven 运行时开启debug,调试 Maven 本身. m2.conf文件, classworlds的配置文件. boot 只有一个文件,plexus-classworlds-(version).jar. 一个类加载器. Maven使用它加载对应自己的类库 conf settings.xml, 全局定义Maven行为. lib Maven运行所需的Java类库. 存放的真正的Maven, 里面内置了很多Maven的超级POM. 设置HTTP代理12345678910111213141516171819&lt;settings&gt;&lt;proxies&gt; &lt;proxy&gt; &lt;id&gt;my-proxy&lt;/id&gt; &lt;!-- 是否激活该代理 --&gt; &lt;active&gt; false | true &lt;/active&gt; &lt;!-- 代理协议 --&gt; &lt;protocol&gt;http&lt;/protocol&gt; &lt;host&gt;&lt;/host&gt; &lt;port&gt;&lt;/port&gt; &lt;!-- &lt;username&gt;***&lt;/username&gt; &lt;password&gt;***&lt;/password&gt; 设置不需要代理的主机名, * 表示所有以google.com的域名不使用代理 &lt;nonProxyHosts&gt;*.google.com&lt;/nonProxxyHosts&gt; --&gt; &lt;/proxy&gt;&lt;proxies&gt;&lt;/settings&gt; Maven ABC 编写POM 12345678910111213&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt; &lt;!-- 指定当前POM版本,Maven2 以及Maven3 默认为 4.0.0 --&gt; &lt;modelVersion&gt;4.0.0&lt;/modleVersion&gt; &lt;!-- groupId+artifaceId定义一个项目的基本坐标--&gt; &lt;groupId&gt;&lt;/groupId&gt; &lt;!-- 当前所属group中的Maven的唯一ID--&gt; &lt;artifactId&gt;&lt;artifactId&gt; &lt;!-- artifast项目的版本号 --&gt; &lt;version&gt;&lt;/version&gt; &lt;!-- --&gt; &lt;name&gt;&lt;/name&gt;&lt;/project&gt; 编写主代码主代码位于 src/main/java, Java类的包名需要跟POM中定义的groupId和artifactId相吻合,编译输出为target 编写测试代码测试代码位于 src/test/java Archetype生成项目骨架1mvn archetype:generate]]></content>
-    </entry>
-
-    
-    <entry>
-      <title><![CDATA[Re:从零开始的博客]]></title>
-      <url>%2F2017%2F01%2F11%2FRe%3A%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%8D%9A%E5%AE%A2%2F</url>
-      <content type="text"><![CDATA[原来用 Jekyll 在 GitHub Page 上撘了一个博客，在 Windows 本地跑的时候许安装一大堆编译环境依赖不说，配置和折腾主题甚是麻烦。自己用一个 HTML5的模板写了个主题，模板不错，但是设计页面的水平堪忧。而且最主要是一些 Markdown 语法不是兼容就是不支持。现在设计的潮流是扁平化和简洁风（相信我，这真的是不为主题设计过 LOW 找的借口），在发现了 Hexo 这个快速、简洁且高效的博客框架后。从 Windows 逃出奔向 MacOS 怀抱的我，毅然决然的在 GitHub 上输入了 dlancerc.github.io。0.1S 后瞬间爆炸，才想起新换了 Mac 没有吧 GitHub 上的项目检出。 没有了存档无法读档只能从零开始，博客采用 Hexo，主题采用 Next。作为世间五彩,我执纯白的美凌格，倾心于 MacOS 的默认配色，把 Next 的做了一些修改。 Bye Jekyll, Bye Social Hello Hexo, Hello Next Re:从零开始的博客]]></content>
     </entry>
 
     

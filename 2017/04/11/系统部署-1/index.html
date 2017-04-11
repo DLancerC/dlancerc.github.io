@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java,Maven," />
+  <meta name="keywords" content="Java,Linux," />
 
 
 
@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="Maven Dependency，Maven 除了快速构建项目外，还有一大功能就是管理项目依赖。Maven 的依赖管理通过groupId、artifactId、version等标识确定一个依赖的坐标，从而通过 Maven 仓库或获取对应的项目依赖的 Jar，自动化的解析任何一个 Java 构件。">
+<meta name="description" content="上周六折腾了一天终于把快一年前的坑给填上了。阿里是越来越会玩了，ECS的价格从原来的40一个月慢慢的涨到了80。发现了腾讯服务器特惠，免费一个月加几张优惠劵，够半年了。把自己开发的一个轻博客部署上去了，这个博客整体样式仿照 Tumblr。注册的时候连接Outlook邮箱发注册邮件老是抽风，有时候邮件可以发成功有时候连接失败，下次有时间注册个邮件平台。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maven 学习笔记（二）">
-<meta property="og:url" content="http://yoursite.com/2017/03/11/Maven学习笔记-2/index.html">
+<meta property="og:title" content="Java 项目部署（一）">
+<meta property="og:url" content="http://yoursite.com/2017/04/11/系统部署-1/index.html">
 <meta property="og:site_name" content="DLancerC">
-<meta property="og:description" content="Maven Dependency，Maven 除了快速构建项目外，还有一大功能就是管理项目依赖。Maven 的依赖管理通过groupId、artifactId、version等标识确定一个依赖的坐标，从而通过 Maven 仓库或获取对应的项目依赖的 Jar，自动化的解析任何一个 Java 构件。">
-<meta property="og:image" content="http://ojf13fhcz.bkt.clouddn.com/2017-04-10-依赖传递.jpg">
-<meta property="og:updated_time" content="2017-04-09T18:56:21.000Z">
+<meta property="og:description" content="上周六折腾了一天终于把快一年前的坑给填上了。阿里是越来越会玩了，ECS的价格从原来的40一个月慢慢的涨到了80。发现了腾讯服务器特惠，免费一个月加几张优惠劵，够半年了。把自己开发的一个轻博客部署上去了，这个博客整体样式仿照 Tumblr。注册的时候连接Outlook邮箱发注册邮件老是抽风，有时候邮件可以发成功有时候连接失败，下次有时间注册个邮件平台。">
+<meta property="og:image" content="http://ojf13fhcz.bkt.clouddn.com/2017-04-11-honks.jpg">
+<meta property="og:updated_time" content="2017-04-11T11:37:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maven 学习笔记（二）">
-<meta name="twitter:description" content="Maven Dependency，Maven 除了快速构建项目外，还有一大功能就是管理项目依赖。Maven 的依赖管理通过groupId、artifactId、version等标识确定一个依赖的坐标，从而通过 Maven 仓库或获取对应的项目依赖的 Jar，自动化的解析任何一个 Java 构件。">
-<meta name="twitter:image" content="http://ojf13fhcz.bkt.clouddn.com/2017-04-10-依赖传递.jpg">
+<meta name="twitter:title" content="Java 项目部署（一）">
+<meta name="twitter:description" content="上周六折腾了一天终于把快一年前的坑给填上了。阿里是越来越会玩了，ECS的价格从原来的40一个月慢慢的涨到了80。发现了腾讯服务器特惠，免费一个月加几张优惠劵，够半年了。把自己开发的一个轻博客部署上去了，这个博客整体样式仿照 Tumblr。注册的时候连接Outlook邮箱发注册邮件老是抽风，有时候邮件可以发成功有时候连接失败，下次有时间注册个邮件平台。">
+<meta name="twitter:image" content="http://ojf13fhcz.bkt.clouddn.com/2017-04-11-honks.jpg">
 
 
 
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/11/Maven学习笔记-2/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/11/系统部署-1/"/>
 
 
 
 
 
-  <title> Maven 学习笔记（二） | DLancerC </title>
+  <title> Java 项目部署（一） | DLancerC </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -275,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/11/Maven学习笔记-2/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/系统部署-1/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="DLancerC">
@@ -299,7 +299,7 @@
             
             
               
-                Maven 学习笔记（二）
+                Java 项目部署（一）
               
             
           </h1>
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T12:00:17+08:00">
-                2017-03-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-11T19:39:15+08:00">
+                2017-04-11
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/项目/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
                   </a>
                 </span>
 
@@ -372,128 +372,12 @@
       
 
       
-        <p>Maven Dependency，Maven 除了快速构建项目外，还有一大功能就是管理项目依赖。Maven 的依赖管理通过groupId、artifactId、version等标识确定一个依赖的坐标，从而通过 Maven 仓库或获取对应的项目依赖的 Jar，自动化的解析任何一个 Java 构件。</p>
-<a id="more"></a>
-<h1 id="Maven-坐标"><a href="#Maven-坐标" class="headerlink" title="Maven 坐标"></a>Maven 坐标</h1><ul>
-<li><p>groupId:<br> 定义当前Maven项目隶属的实际项目.</p>
-</li>
-<li><p>artifactId:<br> 定义实际项目中的一个Maven项目(模块).</p>
-</li>
-<li><p>version:<br> 定义maven项目当前所处的版本.</p>
-</li>
-<li><p>packaging:<br> 定义Maven项目的打包方式.</p>
-</li>
-<li><p>classifier:<br> 定义构建输出的一些附属构件. 例如:一个项目的主构件是xxx-xxx-7.0.0.jar, 可能还需要javadoc和source, 这时javadoc和source就是附属构件的classifier, classifier不能定义, 它不是默认生成的, 而是由附加插件帮助生成的.<br>  groupId, artifactId, version是必须的, packaging 是可选的(默认jar), 而classifier是不能自定义的.</p>
-<p>maven项目生成的文件名一般为 artifactId-version[-classifier].packaging</p>
-</li>
-</ul>
-<h1 id="依赖-POM-定义"><a href="#依赖-POM-定义" class="headerlink" title="依赖 POM 定义"></a>依赖 POM 定义</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">project</span>&gt;</span></div><div class="line">...</div><div class="line">	<span class="comment">&lt;!-- 项目所有的依赖--&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">    	<span class="comment">&lt;!-- 定义一个模块使用的一个依赖--&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    		<span class="comment">&lt;!-- 依赖的基本坐标--&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 依赖类型,对应项目目标定义中的packaging, 不声明默认为Jar --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span><span class="tag">&lt;/<span class="name">type</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 依赖作用范围--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span><span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 标记依赖是否可选--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span><span class="tag">&lt;/<span class="name">optional</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!-- 需要排除的依赖 --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></div><div class="line">            	<span class="tag">&lt;<span class="name">exclusion</span>&gt;</span><span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line">...</div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure>
-<h1 id="依赖范围Scope"><a href="#依赖范围Scope" class="headerlink" title="依赖范围Scope"></a>依赖范围Scope</h1><p>Maven会使用3种classpath来控制使用的依赖(编译classpath, 测试classpath, 运行测试classpath).Maven有以下几种依赖范围.</p>
-<ul>
-<li>compile<br> 编译依赖范围. 默认依赖范围, 对应编译, 测试, 运行三种classpath都有效. eg: Spring-core</li>
-<li>test<br> 测试依赖范围. 只对测试classpath有效, 在编译主代码或者运行项目中无法使用该依赖. eg: JUint</li>
-<li>provided<br> 已提供的依赖范围. 对于编译和测试时有效, 运行时无效使用. eg: servlet-api</li>
-<li>runtime<br> 运行时依赖范围. 对应测试和运行时有效, 但项目编译时无效. eg: JDBC ,编译时使用JDK提供的JDBC接口.</li>
-<li><p>system<br> 系统依赖范围. 依赖范围和provided完全一致, 但是需要显示的指定依赖文件路径. 此类不是由Maven仓库解析处理,往往与本机系统绑定</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span><span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span><span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>system<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">systemPath</span>&gt;</span>$&#123;java.home&#125;/lib/rt.jar<span class="tag">&lt;/<span class="name">systemPath</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>import<br> 导入依赖范围. 该依赖不会对classpath产生实际影响.</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Scope</th>
-<th>compile classpath</th>
-<th>test classpath</th>
-<th>runtime classpath</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>compile</td>
-<td>Y</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>test</td>
-<td>-</td>
-<td>Y</td>
-<td>-</td>
-</tr>
-<tr>
-<td>provided</td>
-<td>-</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>runtime</td>
-<td>-</td>
-<td>Y</td>
-<td>Y</td>
-</tr>
-<tr>
-<td>system</td>
-<td>Y</td>
-<td>Y</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h1 id="依赖传递"><a href="#依赖传递" class="headerlink" title="依赖传递"></a>依赖传递</h1><p><img src="http://ojf13fhcz.bkt.clouddn.com/2017-04-10-依赖传递.jpg" alt="依赖传递"><br>依赖范围不但可以控制3种classpath的依赖,对传递性依赖也会产生影响.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>compile</th>
-<th>test</th>
-<th>provided</th>
-<th>runtime</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>compile</td>
-<td>compile</td>
-<td>-</td>
-<td>-</td>
-<td>runtime</td>
-</tr>
-<tr>
-<td>test</td>
-<td>test</td>
-<td>-</td>
-<td>-</td>
-<td>test</td>
-</tr>
-<tr>
-<td>provided</td>
-<td>provided</td>
-<td>-</td>
-<td>provided</td>
-<td>provided</td>
-</tr>
-<tr>
-<td>runtime</td>
-<td>runtime</td>
-<td>-</td>
-<td>-</td>
-<td>runtime</td>
-</tr>
-</tbody>
-</table>
-<p><strong>eg:</strong><br>      Honks Test (Scope:Test, 对应表中行,第一依赖) 依赖Spring-email(Scope:compile, 对应表中列,第二依赖), Spring-email依赖java-mail. 则Honks Test通过传递依赖java-mail</p>
-<h1 id="依赖调解"><a href="#依赖调解" class="headerlink" title="依赖调解"></a>依赖调解</h1><ul>
-<li>依赖路径最近者优先</li>
-<li>依赖路径相同, 先声明的优先</li>
-</ul>
-<p><strong>eg:</strong></p>
-<ul>
-<li>A -&gt; B -&gt; C -&gt; X(1.0),  A -&gt; B -&gt; X(2.0), 优先使用 X(2.0) [路径更短]</li>
-<li>A -&gt; B -&gt; X(1.0),  A -&gt; B -&gt; X(2.0), 优先使用 X(1.0) [先声明]</li>
-</ul>
+        <p>上周六折腾了一天终于把快一年前的坑给填上了。阿里是越来越会玩了，ECS的价格从原来的40一个月慢慢的涨到了80。发现了腾讯服务器特惠，免费一个月加几张优惠劵，够半年了。把自己开发的一个轻博客部署上去了，这个博客整体样式仿照 Tumblr。注册的时候连接Outlook邮箱发注册邮件老是抽风，有时候邮件可以发成功有时候连接失败，下次有时间注册个邮件平台。<br><a id="more"></a><br><img src="http://ojf13fhcz.bkt.clouddn.com/2017-04-11-honks.jpg" alt="honks"></p>
+<p>打算系统的记录下项目部署的过程和其中的遇到的的坑。</p>
+<p>系统采用的是 Apache Https + Tomcat + MySql，采用的是企鹅家的云服务器，系统是 Centos，只开放了 80 端口供网页访问。</p>
+<p>最后附上网站的链接。</p>
+<blockquote class="blockquote-center"><p><a href="http://119.29.240.35/" target="_blank" rel="external">Honks</a></p>
+</blockquote>
 
       
     </div>
@@ -519,7 +403,7 @@
           
             <a href="/tags/Java/" rel="tag"># Java</a>
           
-            <a href="/tags/Maven/" rel="tag"># Maven</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -528,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/27/Java_Annotation/" rel="next" title="Java Annotation">
-                <i class="fa fa-chevron-left"></i> Java Annotation
+              <a href="/2017/03/26/JavaPuzzler-2/" rel="next" title="Java Puzzler（5-6）">
+                <i class="fa fa-chevron-left"></i> Java Puzzler（5-6）
               </a>
             
           </div>
@@ -537,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/26/JavaPuzzler-2/" rel="prev" title="Java Puzzler（5-6）">
-                Java Puzzler（5-6） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -587,17 +467,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ojf13fhcz.bkt.clouddn.com/dlancerc/blog/avatar.png"
@@ -682,22 +553,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Maven-坐标"><span class="nav-number">1.</span> <span class="nav-text">Maven 坐标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖-POM-定义"><span class="nav-number">2.</span> <span class="nav-text">依赖 POM 定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖范围Scope"><span class="nav-number">3.</span> <span class="nav-text">依赖范围Scope</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖传递"><span class="nav-number">4.</span> <span class="nav-text">依赖传递</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖调解"><span class="nav-number">5.</span> <span class="nav-text">依赖调解</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
