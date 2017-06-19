@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/03/26/JavaPuzzler-2/index.html">
 <meta property="og:site_name" content="DLancerC">
 <meta property="og:description" content="5. 十六进制和八进制12345678910111213System.out.println(0x80);//128//0x81看作是int型，最高位(第32位)为0，所以是正数System.out.println(0x81);//129System.out.println(0x8001);//32769System.out.println(0x70000001);//1879048193//字面">
-<meta property="og:updated_time" content="2017-04-09T18:59:12.000Z">
+<meta property="og:updated_time" content="2017-06-19T10:01:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Puzzler（5-6）">
 <meta name="twitter:description" content="5. 十六进制和八进制12345678910111213System.out.println(0x80);//128//0x81看作是int型，最高位(第32位)为0，所以是正数System.out.println(0x81);//129System.out.println(0x8001);//32769System.out.println(0x70000001);//1879048193//字面">
@@ -383,26 +383,26 @@
 <h1 id="6-多重转型（二进制原理）"><a href="#6-多重转型（二进制原理）" class="headerlink" title="6. 多重转型（二进制原理）"></a>6. 多重转型（二进制原理）</h1><table>
 <thead>
 <tr>
-<th>Type</th>
-<th>Bit</th>
-<th>Length</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Bit</th>
+<th style="text-align:center">Length</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Int</td>
-<td>32位</td>
-<td>2^31-1</td>
+<td style="text-align:center">Int</td>
+<td style="text-align:center">32位</td>
+<td style="text-align:center">2^31-1</td>
 </tr>
 <tr>
-<td>byte</td>
-<td>8位</td>
-<td>2^7-1</td>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">8位</td>
+<td style="text-align:center">2^7-1</td>
 </tr>
 <tr>
-<td>char</td>
-<td>16位</td>
-<td>2^16-1</td>
+<td style="text-align:center">char</td>
+<td style="text-align:center">16位</td>
+<td style="text-align:center">2^16-1</td>
 </tr>
 </tbody>
 </table>
@@ -419,6 +419,7 @@
 </ul>
 <p><strong>△</strong> 从较窄整型转换成较宽整型规定：<strong>如果最初的数值类型是有符号的，就进行符号扩展；如果它是char，那么不管它转化成什么类型，都是进行零扩展</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span> c = (<span class="keyword">char</span>)(<span class="number">0xff</span> &amp; b);</div><div class="line"><span class="comment">/* 0000 0000 0000 0000 0000 0000 1111 1111 (0Xff)</span></div><div class="line"> &amp; 1111 1111 1111 1111 1111 1111 1001 1100 (b=-100)</div><div class="line"> -----------------------------------------</div><div class="line">   0000 0000 0000 0000 0000 0000 1001 1100	(100)</div><div class="line">*/</div><div class="line"><span class="comment">//0xff是第八位全部置1；其他位全部置0；</span></div><div class="line"><span class="comment">//上面是不进行符号扩展</span></div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -452,7 +453,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/11/Maven学习笔记-2/" rel="next" title="Maven 学习笔记（二）">
+              <a href="/2017/03/11/Maven-Note-2/" rel="next" title="Maven 学习笔记（二）">
                 <i class="fa fa-chevron-left"></i> Maven 学习笔记（二）
               </a>
             
@@ -462,7 +463,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/11/系统部署-1/" rel="prev" title="Java 项目部署（一）">
+              <a href="/2017/04/11/System-Deploy-1/" rel="prev" title="Java 项目部署（一）">
                 Java 项目部署（一） <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -534,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

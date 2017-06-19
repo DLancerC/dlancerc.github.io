@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="DLancerC">
 <meta property="og:description" content="1. 奇数性123public static boolen isOdd(int i)&amp;#123;	return i %2 ==1;&amp;#125;
 上面的method是错误的，会在1/4的时间里返回的是错误值 a % b = c中c的值取决于a；只要a为正，无论b取何值，若有余数，c一定为正，同理可知a为负，c一定为负值。">
-<meta property="og:updated_time" content="2017-04-09T18:56:45.000Z">
+<meta property="og:updated_time" content="2017-06-19T10:04:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Puzzler（1-4）">
 <meta name="twitter:description" content="1. 奇数性123public static boolen isOdd(int i)&amp;#123;	return i %2 ==1;&amp;#125;
@@ -381,8 +381,6 @@
 <p>以上返回不会输出1000，而是5。<br>因为<code>24*60*60*1000*1000</code>会溢出，它并不是一个Long型，而是先算出结果后在转换成Long型的a。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LongDivsion</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      <span class="keyword">final</span> <span class="keyword">long</span> a=<span class="number">24L</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>*<span class="number">1000</span>;</div><div class="line">      <span class="keyword">final</span> <span class="keyword">long</span> b=<span class="number">24L</span>*<span class="number">60</span>*<span class="number">60</span>*<span class="number">1000</span>;</div><div class="line">      System.out.println(a/b);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>△当操作很大的数时一定要提防溢出</strong></p>
-<h1 id="4-弱智问题（还是被骗了）"><a href="#4-弱智问题（还是被骗了）" class="headerlink" title="4. 弱智问题（还是被骗了）"></a>4. 弱智问题（还是被骗了）</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Elementary</span></span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">		System.out.println(<span class="number">1234567l</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意<code>1234567l</code>，是<code>l</code>不是<code>1</code>…..<br><strong>△在使用long类型字面常量中，一定要用大写的L，千万不要用小写的l</strong><br> <strong>同理，要避免使用单个l字母的变量名</strong></p>
 
       
     </div>
@@ -417,7 +415,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/31/Maven学习笔记-1/" rel="next" title="Maven 学习笔记（一）">
+              <a href="/2017/01/31/Maven-Note-1/" rel="next" title="Maven 学习笔记（一）">
                 <i class="fa fa-chevron-left"></i> Maven 学习笔记（一）
               </a>
             
@@ -499,7 +497,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -581,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-奇数性"><span class="nav-number">1.</span> <span class="nav-text">1. 奇数性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-找零时刻"><span class="nav-number">2.</span> <span class="nav-text">2. 找零时刻</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-长整除"><span class="nav-number">3.</span> <span class="nav-text">3. 长整除</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-弱智问题（还是被骗了）"><span class="nav-number">4.</span> <span class="nav-text">4. 弱智问题（还是被骗了）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-奇数性"><span class="nav-number">1.</span> <span class="nav-text">1. 奇数性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-找零时刻"><span class="nav-number">2.</span> <span class="nav-text">2. 找零时刻</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-长整除"><span class="nav-number">3.</span> <span class="nav-text">3. 长整除</span></a></li></ol></div>
             
 
           </div>
