@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Maven 是通过设计的插件机制来实现 Maven 构件项目的的周期. 比如 :编译周期有 maven-compiler-plugin, 而针对测试插件有 maven-surefire-plugin 等.Maven 拥有3套相互独立的生命周期,clean, default 和 site. clean 生命周期的目的是为了清理项目, default生命周期的目的是为了构件项目, site生命周期的目">
+<meta name="description" content="Maven 的核心仅仅定义了抽象的生命周期, 具体的任务是交给插件去完成的, 插件以独立构件形式存在, 因此, Maven 只会在使用时才会连接远程仓库下载需要使用的插件.Maven为了复用代码, 一个插件能完成多个任务. 一些功能组成 Maven 插件, 每个 Maven 插件的功能是插件的目标.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Maven 学习笔记（四）">
-<meta property="og:url" content="http://yoursite.com/2017/06/19/Maven-Note-4/index.html">
+<meta property="og:title" content="Maven 学习笔记（五）">
+<meta property="og:url" content="http://yoursite.com/2017/07/11/Maven-Note-5/index.html">
 <meta property="og:site_name" content="DLancerC">
-<meta property="og:description" content="Maven 是通过设计的插件机制来实现 Maven 构件项目的的周期. 比如 :编译周期有 maven-compiler-plugin, 而针对测试插件有 maven-surefire-plugin 等.Maven 拥有3套相互独立的生命周期,clean, default 和 site. clean 生命周期的目的是为了清理项目, default生命周期的目的是为了构件项目, site生命周期的目">
-<meta property="og:updated_time" content="2017-06-19T10:07:48.000Z">
+<meta property="og:description" content="Maven 的核心仅仅定义了抽象的生命周期, 具体的任务是交给插件去完成的, 插件以独立构件形式存在, 因此, Maven 只会在使用时才会连接远程仓库下载需要使用的插件.Maven为了复用代码, 一个插件能完成多个任务. 一些功能组成 Maven 插件, 每个 Maven 插件的功能是插件的目标.">
+<meta property="og:updated_time" content="2017-07-11T05:07:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Maven 学习笔记（四）">
-<meta name="twitter:description" content="Maven 是通过设计的插件机制来实现 Maven 构件项目的的周期. 比如 :编译周期有 maven-compiler-plugin, 而针对测试插件有 maven-surefire-plugin 等.Maven 拥有3套相互独立的生命周期,clean, default 和 site. clean 生命周期的目的是为了清理项目, default生命周期的目的是为了构件项目, site生命周期的目">
+<meta name="twitter:title" content="Maven 学习笔记（五）">
+<meta name="twitter:description" content="Maven 的核心仅仅定义了抽象的生命周期, 具体的任务是交给插件去完成的, 插件以独立构件形式存在, 因此, Maven 只会在使用时才会连接远程仓库下载需要使用的插件.Maven为了复用代码, 一个插件能完成多个任务. 一些功能组成 Maven 插件, 每个 Maven 插件的功能是插件的目标.">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/19/Maven-Note-4/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/11/Maven-Note-5/"/>
 
 
 
 
 
-  <title> Maven 学习笔记（四） | DLancerC </title>
+  <title> Maven 学习笔记（五） | DLancerC </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/19/Maven-Note-4/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/11/Maven-Note-5/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="DLancerC">
@@ -297,7 +297,7 @@
             
             
               
-                Maven 学习笔记（四）
+                Maven 学习笔记（五）
               
             
           </h1>
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T17:45:00+08:00">
-                2017-06-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T12:58:45+08:00">
+                2017-07-11
               </time>
             
 
@@ -370,166 +370,127 @@
       
 
       
-        <p>Maven 是通过设计的插件机制来实现 Maven 构件项目的的周期. 比如 :编译周期有 maven-compiler-plugin, 而针对测试插件有 maven-surefire-plugin 等.Maven 拥有3套相互独立的生命周期,clean, default 和 site. clean 生命周期的目的是为了清理项目, default生命周期的目的是为了构件项目, site生命周期的目的是为了建立项目站点.<br><a id="more"></a> </p>
-<h2 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h2><table>
+        <p>Maven 的核心仅仅定义了抽象的生命周期, 具体的任务是交给插件去完成的, 插件以独立构件形式存在, 因此, Maven 只会在使用时才会连接远程仓库下载需要使用的插件.<br>Maven为了复用代码, 一个插件能完成多个任务. 一些功能组成 Maven 插件, 每个 Maven 插件的功能是插件的目标.<a id="more"></a></p>
+<h1 id="插件绑定"><a href="#插件绑定" class="headerlink" title="插件绑定"></a>插件绑定</h1><p>生命周期的阶段与插件的目标相互绑定, 以完成某个具体的构建任务. eg: maven-compiler-plugin 对应 default 生命周期的 compile 阶段.</p>
+<ul>
+<li>clean</li>
+</ul>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">阶段</th>
-<th></th>
+<th style="text-align:center">生命周期阶段</th>
+<th>插件目标</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">pre-clean</td>
-<td>执行一些清理前需要完成的工作</td>
+<td>&nbsp;</td>
 </tr>
 <tr>
 <td style="text-align:center">clean</td>
-<td>清理上一次构件生成的文件</td>
+<td>maven-clean-plugin:clean</td>
 </tr>
 <tr>
 <td style="text-align:center">post-clean</td>
-<td>执行一些清理后需要完成的工作</td>
+<td>&nbsp;</td>
 </tr>
 </tbody>
 </table>
-<h2 id="default"><a href="#default" class="headerlink" title="default"></a>default</h2><table>
+<ul>
+<li>default</li>
+</ul>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">阶段</th>
-<th></th>
+<th style="text-align:center">生命周期阶段</th>
+<th>插件目标</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">validate</td>
-<td>验证项目是正确的, 所有重要的信息是可用</td>
-</tr>
-<tr>
-<td style="text-align:center">initialize</td>
-<td>初始化构建状态, eg: 设置属性, 创建目录</td>
-</tr>
-<tr>
-<td style="text-align:center">generate-sources</td>
-<td>编译原代码</td>
-</tr>
-<tr>
-<td style="text-align:center">process-sources</td>
-<td>处理源代码, eg: 过滤一些值</td>
-</tr>
-<tr>
-<td style="text-align:center">genreate-resources</td>
-<td>生成资源文件</td>
-</tr>
-<tr>
 <td style="text-align:center">process-resources</td>
-<td>复制和处理资源到目标目录，准备进行打包</td>
+<td>maven-resources-plugin:resources</td>
 </tr>
 <tr>
 <td style="text-align:center">compile</td>
-<td>编译项目的源代码</td>
-</tr>
-<tr>
-<td style="text-align:center">process-classes</td>
-<td>处理编译生成文件, 比如JAVA文件的字节码</td>
-</tr>
-<tr>
-<td style="text-align:center">generate-test-sources</td>
-<td>生成测试编译文件的</td>
-</tr>
-<tr>
-<td style="text-align:center">process-test-sources</td>
-<td>处理测试源代码, eg: 过滤一些值</td>
-</tr>
-<tr>
-<td style="text-align:center">genreate-test-resources</td>
-<td>创建测试配置文件</td>
+<td>maven-compiler-plugin:compile</td>
 </tr>
 <tr>
 <td style="text-align:center">process-test-resources</td>
-<td>复制和处理资源到测试目标目录</td>
+<td>maven-resources-plugin:testResources</td>
 </tr>
 <tr>
 <td style="text-align:center">test-compile</td>
-<td>编译项目测试的源代码到指定目录</td>
-</tr>
-<tr>
-<td style="text-align:center">process-test-classes</td>
-<td>处理测试编译生成的文件</td>
+<td>maven-compiler-plugin:testCompile</td>
 </tr>
 <tr>
 <td style="text-align:center">test</td>
-<td>使用单元测试框架运行测试, 测试源代码不会被打包</td>
-</tr>
-<tr>
-<td style="text-align:center">prepare-package</td>
-<td>准备打包版本</td>
+<td>maven-surefire-plugin:test</td>
 </tr>
 <tr>
 <td style="text-align:center">package</td>
-<td>接收编译代码，打包成一个可发布格式，例如一个JAR</td>
-</tr>
-<tr>
-<td style="text-align:center">pre-integration-test</td>
-<td>集成到测试环境前需要采取的行动, eg: 配置测试环境</td>
-</tr>
-<tr>
-<td style="text-align:center">integration-test</td>
-<td>处理，并部署包在中，集成到测试环境中(如果有必要)</td>
-</tr>
-<tr>
-<td style="text-align:center">post-integration-test</td>
-<td>进行集成测试执行后需要采取的行动 eg: 清理环境</td>
-</tr>
-<tr>
-<td style="text-align:center">verify</td>
-<td>运行任何检查，以验证包是有效性，并符合标准</td>
+<td>maven-jar-plugin:jar</td>
 </tr>
 <tr>
 <td style="text-align:center">install</td>
-<td>安装包到本地仓库，用作当地其他项目的依赖</td>
+<td>maven-install-plugin:install</td>
 </tr>
 <tr>
 <td style="text-align:center">deploy</td>
-<td>将包部署到远程仓库, 与其他开发人员共享和项目</td>
+<td>maven-deploy-plugin:deploy</td>
 </tr>
 </tbody>
 </table>
-<h2 id="site"><a href="#site" class="headerlink" title="site"></a>site</h2><table>
+<p> default 生命周期还有其他阶段, 默认它们没有绑定任何插件 </p>
+<ul>
+<li>site</li>
+</ul>
+<table>
 <thead>
 <tr>
-<th style="text-align:center">阶段</th>
-<th></th>
+<th style="text-align:center">生命周期阶段</th>
+<th>插件目标</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">pre-site</td>
-<td>执行一些生成项目站点之前需要完成的工作</td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">site</td>
-<td>生成项目站点文件</td>
+<td>maven-site-plugin:site</td>
 </tr>
 <tr>
 <td style="text-align:center">post-site</td>
-<td>执行一些生成项目站点之后需要完成的工作</td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align:center">site-deploy</td>
-<td>将项目站点发布到服务器上</td>
+<td>maven-site-plugin:deploy</td>
 </tr>
 </tbody>
 </table>
-<p>##命令对应的生命周期:</p>
-<ul>
-<li><p>$mvn clean<br> 调用 clean 生命周期的clean阶段. 实际执行阶段为 clean 生命周期的 pre-clean 和 clean阶段</p>
+<p>除了内置绑定, 可以通过自己选择某个插件目标绑定到某个生命周期的某个阶段.</p>
+<h1 id="自定义绑定"><a href="#自定义绑定" class="headerlink" title="自定义绑定"></a>自定义绑定</h1><p>eg: 生成项目的源码 jar 包, 可以利用 maven-source-plugin, 它其中的 jar-no-fork 目标可以将项目主代码打包成 jar 文件, 可以将 default 生命周期 verify 阶段, 在完成集成测试后和安装构件之前创建源码 jar 包.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">executions</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">execution</span>&gt;</span></div><div class="line">					<span class="comment">&lt;!-- 执行任务 --&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-sources<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">					<span class="comment">&lt;!-- 绑定任务执行的生命周期阶段 --&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">phase</span>&gt;</span>verify<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></div><div class="line">					<span class="comment">&lt;!-- 需要执行的插件目标 --&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">goals</span>&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar-no-fork<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">goals</span>&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">execution</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">executions</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h1><ul>
+<li><p>命令行插件配置<br>Maven中可以使用 -D 参数, 并伴随一个参数建 = 参数值<br>eg: 编译时跳过项目里的测试代表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mvn install -Dmaven.test.skip=<span class="literal">true</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>$mvn test<br> 调用 default 生命周期的 test 阶段. 实际执行阶段为 default 生命周期的 validate , initialize等阶段, 直到 test 所有阶段</p>
+<li><p>POM中插件全局配置<br>如果一些参数从项目创建到项目发布都不会改变或者很少改变, 可以在POM中全局配置.<br>eg: 生成支持Java 1.5 的字节码文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">source</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">target</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">target</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>$mvn clean install<br> 调用 clean 生命周期的 clean 阶段和 default 生命周期的 install 阶段.  实际执行阶段为 clean 生命周期的 pre-clean 和 clean 阶段, 和 default 生命周期的 validate , initialize等阶段, 直到 install 所有阶段</p>
+<li><p>POM中插件任务配置<br>还可以为某个插件任务配置特定的参数, 比如上面生成项目源码的例子.</p>
 </li>
-<li>$mvn clean deploy site-deploy<br> 调用 clean 生命周期的 clean 阶段和 default 生命周期的 deploy 阶段, 以及 site 生命周期的 deploy-site 阶段. 实际执行阶段为 clean 生命周期的 pre-clean 和 clean 阶段, 和 default 生命周期的所有阶段, site 生命周期所有阶段.</li>
+</ul>
+<h1 id="插件解析机制"><a href="#插件解析机制" class="headerlink" title="插件解析机制"></a>插件解析机制</h1><ul>
+<li><p>插件仓库</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></div><div class="line"> 		<span class="tag">&lt;<span class="name">id</span>&gt;</span>central<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>Maven Plugin Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">layout</span>&gt;</span>default<span class="tag">&lt;/<span class="name">layout</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></div><div class="line">  			<span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;<span class="name">releases</span>&gt;</span></div><div class="line">  			<span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>never<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></div><div class="line">  		<span class="tag">&lt;/<span class="name">releases</span>&gt;</span></div><div class="line">  	<span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>插件的默认groupId<br>POM配置插件时, 如果该插件是 Maven 的官方插件, 可以省略 groupId 的配置. Maven 解析插件时, 如果是 Maven 官方插件会默认获取超级 POM 中设置的版本, 如果是自定义插件, Maven 会先检查所有仓库中可用的版本, Maven3 会直接提取 release进行使用(Maven2 中默认使用 latest 进行解析). </p>
+</li>
 </ul>
 
       
@@ -565,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/15/Maven-Note-3/" rel="next" title="Maven 学习笔记（三）">
-                <i class="fa fa-chevron-left"></i> Maven 学习笔记（三）
+              <a href="/2017/07/06/Spring-Batch-1/" rel="next" title="Spring Batch(一)">
+                <i class="fa fa-chevron-left"></i> Spring Batch(一)
               </a>
             
           </div>
@@ -574,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/06/Spring-Batch-1/" rel="prev" title="Spring Batch(一)">
-                Spring Batch(一) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -729,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#clean"><span class="nav-number">1.</span> <span class="nav-text">clean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#default"><span class="nav-number">2.</span> <span class="nav-text">default</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#site"><span class="nav-number">3.</span> <span class="nav-text">site</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#插件绑定"><span class="nav-number">1.</span> <span class="nav-text">插件绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义绑定"><span class="nav-number">2.</span> <span class="nav-text">自定义绑定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件配置"><span class="nav-number">3.</span> <span class="nav-text">插件配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件解析机制"><span class="nav-number">4.</span> <span class="nav-text">插件解析机制</span></a></li></ol></div>
             
 
           </div>
